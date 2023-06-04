@@ -10,6 +10,7 @@ using std::endl;
 int StringLength(const char str[]); // считает количество символов в строке
 void To_lower(char str[]); //переводит строку в нижний регистр
 void To_upper(char str[]); //переводит строку в верхний регистр
+void Shrink(char str[]); //удаляет из строки лишние пробелы
 
 
 void main()
@@ -37,6 +38,8 @@ void main()
 	cout << str << endl;
 	cout << "Строка в верхний регистр: "; To_upper(str);
 	cout << str << endl;
+	cout << "Удаляет из строки лишние пробелы: "; Shrink(str);
+	cout << str << endl;
 
 
 }
@@ -58,13 +61,27 @@ void To_lower(char str[]) //переводит строку в нижний ре
 	}
 }
 
-void To_upper(char str[]) //переводит строку в верхнийверхний регистр
+void To_upper(char str[]) //переводит строку в верхний регистр
 {
 	for (int i = 0; str[i]; i++)
 	{
 		if (str[i] >= 'a' && str[i] <= 'z' || str[i] >= 'а' && str[i] <= 'я')
 		{
 			str[i] -= 32;
+		}
+	}
+}
+
+void Shrink(char str[]) //удаляет из строки лишние пробелы
+{
+	for (int i = 0; str[i]; i++) // основной счетчик
+	{
+		while (str[i] == ' ' && str[i + 1] == ' ') // поиск пробелов
+		{
+			for (int j = i; str[j]; j++) // сдвиг влево
+			{
+				str[j] = str[j + 1];
+			}
 		}
 	}
 }
