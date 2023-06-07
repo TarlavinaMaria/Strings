@@ -102,13 +102,9 @@ int Is_int_number(char str[])	//определяет, является ли ст
 	{
 		if (str[i] >= '0' && str[i] <= '9')
 		{
-			return false;
+			return true;
 		}
-		if (str[i] == ' ' && str[i + 1] == ' ')
-		{
-			return false;
-		}
-		return true;
+		return false;
 	}
 }
 
