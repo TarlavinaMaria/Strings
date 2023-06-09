@@ -48,7 +48,7 @@ void main()
 	cout << str << endl;
 
 	cout << "Определяет, является ли строка целым числом: ";
-	cout << (Is_int_number(str) ? "Число" : "Не число") << endl; 
+	cout << (Is_int_number(str) ? "Число" : "Не число") << endl;
 
 
 }
@@ -104,10 +104,10 @@ int Is_int_number(char str[])	//определяет, является ли ст
 {
 	for (int i = 0; str[i]; i++)
 	{
-		if (str[i] >= '0' && str[i] <= '9')
+		if (!(str[i] >= '0' && str[i] <= '9'))
 		{
-			return true;
+			return false;
 		}
-		return false;
 	}
+	return true;
 }
