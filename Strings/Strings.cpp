@@ -16,8 +16,11 @@ char* Shrink(char str[]); //удаляет из строки лишние про
 
 // типа bool являются только true и false
 bool Is_palindrome(const char str[]); // oпределяет, является ли строка палиндромом
-char* remove_symbol(char str[], char symbol); // удаление символов
-int Is_int_number(char str[]);	//определяет, является ли строка целым числом
+char* remove_symbol(char str[], char symbol); // удаление символов для палиндромома
+bool Is_int_number(char str[]);	//определяет, является ли строка целым числом
+// int To_int_number(char str[]);	// если строка является целым числом, возвращает его значение
+
+bool Is_bin_number(char str[]); //определяет, является ли строка двоичным числом
 
 
 
@@ -36,7 +39,7 @@ void main()
 	cout << str1 << endl;*/
 
 	const int SIZE = 256;
-	char str[SIZE] = "Аргентина манит негра";
+	char str[SIZE] = "101";
 	//cout << "Введите строку: "; /*cin >> str;*/
 	//SetConsoleCP(1251);
 	//cin.getline(str, SIZE);
@@ -50,8 +53,10 @@ void main()
 	cout << "Строка является палиндромом? " << (Is_palindrome(str) ? "Да" : "Нет") << endl;
 
 
-	cout << "Определяет, является ли строка целым числом: " << (Is_int_number(str) ? "Число" : "Не число") << endl;
+	cout << "Определяет, является ли строка целым числом: " << (Is_int_number(str) ? "Число является целым" : "Не число") << endl;
 
+	cout << "Определяет, является ли строка двоичным числом: " << (Is_bin_number(str) ? "Число является двоичным" : "Не число") << endl;
+	
 
 }
 
@@ -138,7 +143,7 @@ bool Is_palindrome(const char str[]) // oпределяет, является л
 	return true;
 }
 
-char* remove_symbol(char str[], char symbol)
+char* remove_symbol(char str[], char symbol) // удаление символов для палиндромома
 {
 	for (int i = 0; str[i]; i++)
 	{
@@ -152,12 +157,29 @@ char* remove_symbol(char str[], char symbol)
 	}
 	return str;
 }
-
-int Is_int_number(char str[])	//определяет, является ли строка целым числом
+bool Is_int_number(char str[])	//определяет, является ли строка целым числом
 {
 	for (int i = 0; str[i]; i++)
 	{
 		if (!(str[i] >= '0' && str[i] <= '9'))
+		{
+			return false;
+		}
+	}
+	return true;
+}
+//int To_int_number(char str[])	// если строка является целым числом, возвращает его значение
+//{}
+
+bool Is_bin_number(char str[]) //определяет, является ли строка двоичным числом
+{
+	for (int i = 0; str[i]; i++)
+	{
+		if (str[i] != '0' && str[i] != '1' && str[i] != ' ')
+		{
+			return false;
+		}
+		if (str[i] == ' ' && str[i + 1] == ' ')
 		{
 			return false;
 		}
